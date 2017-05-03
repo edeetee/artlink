@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.camera) CameraView cameraView;
     @BindView(R.id.title) TextView title;
+    @BindView(R.id.match) TextView matchText;
     @BindView(R.id.activity_main) CoordinatorLayout layout;
     @BindView(R.id.draw_dots) DrawDotsView drawDots;
     @BindView(R.id.bottom_card) CardView bottomCard;
@@ -74,9 +75,12 @@ public class MainActivity extends AppCompatActivity {
 
     @IdRes int[] images = new int[]{
             R.drawable.flask_front,
-            R.drawable.red_square,
-            R.drawable.green_square,
             R.drawable.box
+    };
+
+    String[] titles = new String[]{
+            "Flask (front)",
+            "Box"
     };
 
     @Override
@@ -203,8 +207,12 @@ public class MainActivity extends AppCompatActivity {
 
         //if found a match, draw name
         final String titleText = (bestMatchesList != null && minMatchesRatio < bestMatchRatio) ?
-            getResources().getResourceEntryName(images[bestMatchI]) + ", " + bestMatchRatio*100 + "% match" :
+                titles[bestMatchI]:
             "NONE";
+
+        final String matchString = (bestMatchesList != null && minMatchesRatio < bestMatchRatio) ?
+                bestMatchRatio*100 + "% match" :
+                "0% match";
 
         KeyPoint[] processedKeyPointsArray = processedKeyPoints.toArray();
         drawDots.points.clear();
@@ -223,6 +231,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 title.setText(titleText);
+                matchText.setText(matchString);
                 drawDots.invalidate();
                 cameraView.captureImage();
             }
@@ -252,6 +261,6 @@ public class MainActivity extends AppCompatActivity {
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
-        return new Point((int)cvPoint.y*3, metrics.heightPixels-300-(int)cvPoint.x*3);
+        return new Point((int)cvPoint.y, metrics.heightPixels-title.getHeight()-(int)cvPoint.x);
     }
 }

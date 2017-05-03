@@ -45,14 +45,21 @@
                     android:textSize="30dp" />
 
                 <TextView
-                    android:id="@+id/smallerLorem"
                     android:layout_below="@id/title"
+                    android:id="@+id/match"
+                    android:padding="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="25dp"/>
+
+                <TextView
+                    android:id="@+id/smallerLorem"
+                    android:layout_below="@id/match"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
                     android:textSize="20dp"
-                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a viverra tellus. Donec hendrerit iaculis malesuada. Vivamus dignissim quis tortor eu aliquam. Maecenas ullamcorper nisi sed diam faucibus maximus. Quisque dui orci, scelerisque vel magna vel, fringilla lacinia massa. Nunc ullamcorper quam augue, ut congue arcu eleifend vitae. Praesent non quam eget mi rhoncus rutrum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vel ante fermentum, varius lacus a, tempus risus. Fusce auctor semper ante in maximus. Duis bibendum, justo pharetra malesuada laoreet, orci eros finibus purus, sit amet pretium neque justo id erat. Sed in quam pulvinar, pharetra metus in, suscipit ipsum. Fusce at massa scelerisque, vestibulum metus eu, tincidunt felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae"
-
+                    android:text="Vivamus dignissim quis tortor eu aliquam. Maecenas ullamcorper nisi sed diam faucibus maximus. Quisque dui orci, scelerisque vel magna vel, fringilla lacinia massa. Nunc ullamcorper quam augue, ut congue arcu eleifend vitae. Praesent non quam eget mi rhoncus rutrum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vel ante fermentum, varius lacus a, tempus risus."
                     />
 
             </RelativeLayout>
