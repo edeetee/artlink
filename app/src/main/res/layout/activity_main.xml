@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:clickable="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    app:statusBarBackground="@android:color/transparent"
+    tools:context="edeetee.artlink.MainActivity">
+
+    <com.flurgle.camerakit.CameraView
+        app:ckMethod="speed"
+        app:ckCropOutput="false"
+        android:id="@+id/camera"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <edeetee.artlink.DrawDotsView
+        android:id="@+id/draw_dots"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/nestedScroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:behavior_peekHeight="80dp"
+        app:layout_behavior="@string/bottom_sheet_behavior">
+        <android.support.v7.widget.CardView
+            android:id="@+id/bottom_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="TEST_TEXT"
+                    android:textSize="30dp" />
+
+                <TextView
+                    android:id="@+id/smallerLorem"
+                    android:layout_below="@id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:textSize="20dp"
+                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a viverra tellus. Donec hendrerit iaculis malesuada. Vivamus dignissim quis tortor eu aliquam. Maecenas ullamcorper nisi sed diam faucibus maximus. Quisque dui orci, scelerisque vel magna vel, fringilla lacinia massa. Nunc ullamcorper quam augue, ut congue arcu eleifend vitae. Praesent non quam eget mi rhoncus rutrum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vel ante fermentum, varius lacus a, tempus risus. Fusce auctor semper ante in maximus. Duis bibendum, justo pharetra malesuada laoreet, orci eros finibus purus, sit amet pretium neque justo id erat. Sed in quam pulvinar, pharetra metus in, suscipit ipsum. Fusce at massa scelerisque, vestibulum metus eu, tincidunt felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae"
+
+                    />
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+    </android.support.v4.widget.NestedScrollView>
+</android.support.design.widget.CoordinatorLayout>
