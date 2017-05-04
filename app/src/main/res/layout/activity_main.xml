@@ -58,8 +58,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:textSize="20dp"
-                    android:text="Vivamus dignissim quis tortor eu aliquam. Maecenas ullamcorper nisi sed diam faucibus maximus. Quisque dui orci, scelerisque vel magna vel, fringilla lacinia massa. Nunc ullamcorper quam augue, ut congue arcu eleifend vitae. Praesent non quam eget mi rhoncus rutrum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vel ante fermentum, varius lacus a, tempus risus."
+                    android:textSize="16dp"
+                    android:text="Production	Unknown (potter), circa 700, Japan\nMaterials	ceramic, glaze\nClassification	flasks\nDimensions	Overall: 260mm (Height) x 255mm (Width) x 160mm (Depth)\nOverall: 180mm (Height) x 293mm (Width) x 293mm (Length)\nCredit line	Purchased 2010\nRegistration number	GH013499"
                     />
 
             </RelativeLayout>
