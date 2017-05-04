@@ -33,6 +33,7 @@ import org.opencv.features2d.BFMatcher;
 import org.opencv.features2d.DescriptorExtractor;
 import org.opencv.features2d.DescriptorMatcher;
 import org.opencv.features2d.FeatureDetector;
+import org.opencv.features2d.FlannBasedMatcher;
 import org.opencv.features2d.ORB;
 
 
@@ -99,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
             //read drawable
             Drawable d = ContextCompat.getDrawable(this, image);
             Bitmap bitmap = ((BitmapDrawable)d).getBitmap();
-            Utils.bitmapToMat(bitmap, photoToProcess);
+            Utils.bitmapToMat(Bitmap.createScaledBitmap(bitmap, 500, 500, false), photoToProcess);
 
             //get descriptor
             descriptors.add(getDescriptors(photoToProcess));
@@ -151,14 +152,15 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
     }
 
-    private static final float matchRatio = 0.75f;
-    private static final float minMatchesRatio = 0.00f;
+    private static final float matchRatio = 0.8f;
+    private static final float minMatchesRatio = 0.005f;
 
     Mat photoToProcess = new Mat();
     Mat processedDescriptors = new Mat();
     MatOfKeyPoint processedKeyPoints = new MatOfKeyPoint();
     //BFMatcher matcher = new BFMatcher(NORM_HAMMING, true);
-    DescriptorMatcher matcher = DescriptorMatcher.create(DescriptorMatcher.BRUTEFORCE);
+    DescriptorMatcher matcher = DescriptorMatcher.create(DescriptorMatcher.BRUTEFORCE_HAMMING);
+    //FlannBasedMatcher matcher = FlannBasedMatcher.create();
 
     protected void processPhoto(byte[] jpeg){
         Bitmap img = BitmapFactory.decodeByteArray(jpeg, 0, jpeg.length);
@@ -190,11 +192,9 @@ public class MainActivity extends AppCompatActivity {
                 DMatch[] matchArray = match.toArray();
                 if(matchArray.length == 2 && matchArray[0].distance < (matchRatio*matchArray[1].distance))
                     correctMatches.add(matchArray[0]);
-                else
-                    correctMatches.add(matchArray[0]);
             }
 
-            float matchRatio = (float)correctMatches.size()/descriptor.total();
+            float matchRatio = (float)correctMatches.size()/matches.size();
             //float matchRatio = (float)matches.total()/descriptor.total();
             //is new best
             if(bestMatchRatio < matchRatio){
@@ -247,7 +247,7 @@ public class MainActivity extends AppCompatActivity {
         return descriptors;
     }
 
-    FeatureDetector detector = FeatureDetector.create(FeatureDetector.ORB);
+    FeatureDetector detector = FeatureDetector.create(FeatureDetector.PYRAMID_ORB);
     DescriptorExtractor extractor = DescriptorExtractor.create(DescriptorExtractor.ORB);
     //ORB orb = ORB.create();
 

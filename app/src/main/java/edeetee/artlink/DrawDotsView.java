@@ -24,7 +24,8 @@ public class DrawDotsView extends View {
         super(context, attrs);
 
         pointsPaint = new Paint();
-        pointsPaint.setColor(ContextCompat.getColor(getContext(), android.R.color.white));
+        pointsPaint.setColor(ContextCompat.getColor(getContext(), android.R.color.white
+        ));
         pointsPaint.setAlpha(200);
 
         points = new ArrayList<>();
